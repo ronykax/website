@@ -1,2 +1,0 @@
-# rony.lol
-uhh yes
