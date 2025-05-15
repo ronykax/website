@@ -6,12 +6,12 @@
 
 @font-face {
     font-family: "PerfectDos";
-    src: url("Perfect DOS VGA 437.ttf") format("truetype");
+    src: url("/Perfect DOS VGA 437.ttf") format("truetype");
 }
 
 body {
     font-family: "PerfectDos", monospace;
-    background-image: url("bg.jpg");
+    background-image: url("/bg.jpg");
     @apply bg-cover;
     @apply bg-black text-white;
 }
