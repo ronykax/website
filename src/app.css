@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer base {
+    @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+}
+
+@font-face {
+    font-family: "PerfectDos";
+    src: url("Perfect DOS VGA 437.ttf") format("truetype");
+}
+
+body {
+    font-family: "PerfectDos", monospace;
+    background-image: url("bg.jpg");
+    @apply bg-cover;
+    @apply bg-black text-white;
+}
+
+a {
+    @apply hover:underline;
+}
