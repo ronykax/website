@@ -8,9 +8,15 @@
 
     const projects: Project[] = [
         {
+            name: "year progress",
+            url: "https://yearprogress.ronykax.xyz",
+            year: "2025",
+            description: "tracks the current year's progress",
+        },
+        {
             name: "mood.exe",
             url: "https://github.com/ronykax/mood.exe",
-            year: "Ongoing",
+            year: "2025",
             description: "desktop app that logs your mood",
         },
         {
