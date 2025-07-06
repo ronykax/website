@@ -14,10 +14,10 @@
             description: "tracks the current year's progress",
         },
         {
-            name: "mood.exe",
-            url: "https://github.com/ronykax/mood.exe",
+            name: "hackaplace",
+            url: "https://github.com/ronykax/hackaplace",
             year: "2025",
-            description: "desktop app that logs your mood",
+            description: "open 1000x1000 canvas for hack clubbers",
         },
         {
             name: "keybored",
