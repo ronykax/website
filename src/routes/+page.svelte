@@ -15,7 +15,7 @@
         },
         {
             name: "hackaplace",
-            url: "https://github.com/ronykax/hackaplace",
+            url: "https://hackaplace.vercel.app",
             year: "2025",
             description: "open 1000x1000 canvas for hack clubbers",
         },
@@ -44,13 +44,19 @@
             description: "first game i ever made",
         },
     ];
+
+    const links = [
+        { name: "github", url: "https://github.com/ronykax" },
+        { name: "youtube", url: "https://youtube.com/@ronykax" },
+        { name: "x", url: "https://x.com/ronykax" },
+    ];
 </script>
 
 <svelte:head>
     <title>ronykax</title>
 </svelte:head>
 
-<div class="tracking-tighter px-4">
+<div class="tracking-tighter px-4 py-6 md:py-16">
     <p class="text-lg opacity-75 leading-snug">
         <br />
 
@@ -65,24 +71,19 @@
         <br />
         <br />
 
-        at the end of the day, if whatever i made makes someone go "yo, this is
+        at the end of the day, if whatever i made makes someone go "yo this is
         kinda sick" then i'm doing it right.
 
-        <!-- <br />
-        <br /> -->
-
-        <!-- follow me on <a href="/">𝕏</a> or <a href="/">github</a>. sometimes i
-        post on <a href="/">youtube</a>. -->
-
         <br />
         <br />
         <br />
 
-        <strong>check out some of my projects below!</strong>
+        <strong>here's some experiments i'm proud of:</strong>
     </p>
 
+    <br />
+
     <ul class="text-lg opacity-75 leading-snug">
-        <br />
         {#each projects as item}
             <li>
                 <div class="flex w-full">
@@ -107,6 +108,19 @@
             </li>
         {/each}
     </ul>
+
+    <br />
+
+    <p class="opacity-75 text-lg">
+        {#each links as link, i}
+            <span class="font-black">
+                <a href={link.url} class="font-normal">
+                    {link.name}
+                </a>
+                {i === links.length - 1 ? "" : " ∕ "}
+            </span>
+        {/each}
+    </p>
 </div>
 
 <style>

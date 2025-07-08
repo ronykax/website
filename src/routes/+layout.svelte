@@ -6,7 +6,7 @@
 
 <div class="vhs"></div>
 
-<main class="max-w-xl mx-auto h-screen flex items-center">
+<main class="max-w-xl mx-auto">
     {@render children()}
 </main>
 
