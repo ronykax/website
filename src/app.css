@@ -13,8 +13,7 @@
 body {
     font-family: "PerfectDos", monospace;
     background-image: url("/bg.png");
-    @apply bg-cover;
-    @apply bg-black text-white;
+    @apply bg-cover bg-center bg-no-repeat min-h-screen bg-black text-white;
 }
 
 a {
