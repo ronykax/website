@@ -65,7 +65,7 @@
         <br />
         <br />
 
-        sometimes it's a dumb project that doesn't help anyone. other times,
+        sometimes it's a dumb app that doesn't help anyone. other times,
         it's something that solves a real problem.
 
         <br />
