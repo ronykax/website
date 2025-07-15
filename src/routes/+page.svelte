@@ -8,6 +8,12 @@
 
     const projects: Project[] = [
         {
+            name: "drawcat.lol (wip)",
+            url: "https://github.com/ronykax/drawcat.lol",
+            year: "2025",
+            description: "a collection of poorly drawn cats",
+        },
+        {
             name: "year progress",
             url: "https://yearprogress.ronykax.xyz",
             year: "2025",
@@ -18,12 +24,6 @@
             url: "https://hackaplace.vercel.app",
             year: "2025",
             description: "open 1000x1000 canvas for hack clubbers",
-        },
-        {
-            name: "keybored",
-            url: "https://github.com/ronykax/keybored",
-            year: "2025",
-            description: "makes typing very fun (real)",
         },
         {
             name: "bounce back",
@@ -65,8 +65,8 @@
         <br />
         <br />
 
-        sometimes it's a dumb app that doesn't help anyone. other times,
-        it's something that solves a real problem.
+        sometimes it's a dumb app that doesn't help anyone. other times, it's
+        something that solves a real problem.
 
         <br />
         <br />
