@@ -8,8 +8,8 @@
 
     const projects: Project[] = [
         {
-            name: "drawcat.lol (wip)",
-            url: "https://github.com/ronykax/drawcat.lol",
+            name: "drawcat.lol",
+            url: "https://drawcat.lol",
             year: "2025",
             description: "a collection of poorly drawn cats",
         },
