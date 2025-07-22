@@ -1,9 +1,12 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     interface Project {
         name: string;
         url: string;
         year: string;
         description: string;
+        yes?: boolean;
     }
 
     const projects: Project[] = [
@@ -12,6 +15,7 @@
             url: "https://drawcat.lol",
             year: "2025",
             description: "a collection of poorly drawn cats",
+            yes: true,
         },
         {
             name: "year progress",
@@ -50,6 +54,27 @@
         { name: "youtube", url: "https://youtube.com/@ronykax" },
         { name: "x", url: "https://x.com/ronykax" },
     ];
+
+    let randomColor = $state("red");
+
+    const colors = [
+        "red",
+        "orange",
+        "yellow",
+        "greenyellow",
+        "skyblue",
+        "blueviolet",
+        "violet",
+    ];
+
+    let index = 0;
+
+    onMount(() => {
+        setInterval(() => {
+            randomColor = colors[index];
+            index = (index + 1) % colors.length;
+        }, 250);
+    });
 </script>
 
 <svelte:head>
@@ -57,7 +82,7 @@
 </svelte:head>
 
 <div class="tracking-tighter px-4 py-6 md:py-16">
-    <p class="text-lg opacity-75 leading-snug">
+    <p class="text-lg leading-snug">
         <br />
 
         hi, i'm <a href="/bio">rony</a> and i love building cool shit.
@@ -83,22 +108,26 @@
 
     <br />
 
-    <ul class="text-lg opacity-75 leading-snug">
+    <ul class="text-lg leading-snug">
         {#each projects as item}
             <li>
                 <div class="flex w-full">
                     <span class="mr-2.5">*</span>
                     <div class="w-full">
                         <div class="flex justify-between w-full">
-                            <a href={item.url} target="_blank">
+                            <a
+                                href={item.url}
+                                target="_blank"
+                                style:color={item.yes ? randomColor : ""}
+                            >
                                 {item.name}
                             </a>
 
-                            <span class="opacity-65">
+                            <span class="opacity-50">
                                 {item.year}
                             </span>
                         </div>
-                        <span class="opacity-65">
+                        <span class="opacity-75">
                             {item.description}
                         </span>
                     </div>
@@ -111,7 +140,7 @@
 
     <br />
 
-    <p class="opacity-75 text-lg">
+    <p class="text-lg">
         {#each links as link, i}
             <span class="font-black">
                 <a href={link.url} class="font-normal">
