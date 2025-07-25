@@ -145,7 +145,7 @@
     <p class="text-lg">
         {#each links as link, i}
             <span class="font-black">
-                <a href={link.url} class="font-normal">
+                <a href={link.url} class="font-normal" target="_blank">
                     {link.name}
                 </a>
                 {i === links.length - 1 ? "" : " ∕ "}
