@@ -52,7 +52,9 @@
     const links = [
         { name: "github", url: "https://github.com/ronykax" },
         { name: "youtube", url: "https://youtube.com/@ronykax" },
-        { name: "x", url: "https://x.com/ronykax" },
+        { name: "twitter", url: "https://x.com/ronykax" },
+        { name: "discord", url: "https://discord.gg/CU5SUGNvtH" },
+        { name: "itch.io", url: "https://ronykax.itch.io" },
     ];
 
     let randomColor = $state("red");
