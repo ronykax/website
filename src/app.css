@@ -1,17 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@layer base {
-    @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
-}
-
 @font-face {
-    font-family: "PerfectDos";
-    src: url("/Perfect DOS VGA 437.ttf") format("truetype");
+    font-family: "Pixel Operator Mono";
+    src: url("/PixelOperatorMono.ttf") format("truetype");
 }
 
 body {
-    font-family: "PerfectDos", monospace;
+    font-family: "Pixel Operator Mono", monospace;
     background-image: url("/bg.png");
     @apply bg-cover bg-center bg-no-repeat min-h-screen bg-black text-white;
 }
