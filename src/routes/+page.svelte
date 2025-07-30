@@ -54,7 +54,7 @@
         { name: "youtube", url: "https://youtube.com/@ronykax" },
         { name: "twitter", url: "https://x.com/ronykax" },
         { name: "discord", url: "https://discord.gg/CU5SUGNvtH" },
-        { name: "itch.io", url: "https://ronykax.itch.io" },
+        { name: "ko-fi", url: "https://ko-fi.com/ronykax" },
     ];
 
     let randomColor = $state("red");
@@ -105,7 +105,7 @@
         <br />
         <br />
 
-        <strong>here's some experiments i'm proud of:</strong>
+        <strong>check out some of my projects brlow:</strong>
     </p>
 
     <br />
