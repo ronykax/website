@@ -54,7 +54,7 @@
         { name: "youtube", url: "https://youtube.com/@ronykax" },
         { name: "twitter", url: "https://x.com/ronykax" },
         { name: "discord", url: "https://discord.gg/CU5SUGNvtH" },
-        { name: "ko-fi", url: "https://ko-fi.com/ronykax" },
+        { name: "ko-fi", url: "https://ko-fi.com/ronykax", yes: true },
     ];
 
     let randomColor = $state("red");
@@ -145,7 +145,7 @@
     <p class="text-lg">
         {#each links as link, i}
             <span class="font-black">
-                <a href={link.url} class="font-normal" target="_blank">
+                <a href={link.url} class="font-normal" target="_blank" style:color={link.yes ? randomColor : ""}>
                     {link.name}
                 </a>
                 {i === links.length - 1 ? "" : " ∕ "}
