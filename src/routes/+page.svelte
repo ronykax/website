@@ -52,8 +52,8 @@
     const links = [
         { name: "github", url: "https://github.com/ronykax" },
         { name: "youtube", url: "https://youtube.com/@ronykax" },
+        { name: "discord", url: "https://discord.gg/CU5SUGNvtH", yes: true },
         { name: "twitter", url: "https://x.com/ronykax" },
-        { name: "discord", url: "https://discord.gg/CU5SUGNvtH" },
         { name: "ko-fi", url: "https://ko-fi.com/ronykax", yes: true },
     ];
 
