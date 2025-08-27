@@ -11,6 +11,12 @@
 
     const projects: Project[] = [
         {
+            name: "message kit (wip)",
+            url: "https://messagekit.app",
+            year: "2025",
+            description: "message builder for discord",
+        },
+        {
             name: "drawcat.lol",
             url: "https://drawcat.lol",
             year: "2025",
@@ -145,7 +151,12 @@
     <p class="text-lg">
         {#each links as link, i}
             <span class="font-black">
-                <a href={link.url} class="font-normal" target="_blank" style:color={link.yes ? randomColor : ""}>
+                <a
+                    href={link.url}
+                    class="font-normal"
+                    target="_blank"
+                    style:color={link.yes ? randomColor : ""}
+                >
                     {link.name}
                 </a>
                 {i === links.length - 1 ? "" : " ∕ "}
