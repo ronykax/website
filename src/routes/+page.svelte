@@ -30,12 +30,6 @@
             description: "tracks the current year's progress",
         },
         {
-            name: "hackaplace",
-            url: "https://hackaplace.vercel.app",
-            year: "2025",
-            description: "open 1000x1000 canvas for hack clubbers",
-        },
-        {
             name: "bounce back",
             url: "https://ronykax.itch.io/bounce-back",
             year: "2024",
