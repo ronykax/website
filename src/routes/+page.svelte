@@ -12,7 +12,7 @@
     const projects: Project[] = [
         {
             name: "message kit (wip)",
-            url: "https://messagekit.app",
+            url: "https://landing.messagekit.ronykax.xyz",
             year: "2025",
             description: "message builder for discord",
         },
