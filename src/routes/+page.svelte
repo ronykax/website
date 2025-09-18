@@ -11,17 +11,17 @@
 
     const projects: Project[] = [
         {
-            name: "message kit (wip)",
-            url: "https://landing.messagekit.ronykax.xyz",
+            name: "message kit",
+            url: "https://messagekit.app",
             year: "2025",
             description: "message builder for discord",
+            yes: true,
         },
         {
             name: "drawcat.lol",
             url: "https://drawcat.lol",
             year: "2025",
             description: "a collection of poorly drawn cats",
-            yes: true,
         },
         {
             name: "year progress",
@@ -36,16 +36,10 @@
             description: "2D game where you're your own enemy",
         },
         {
-            name: "folios.cc",
-            url: "https://folios.cc",
-            year: "2024",
-            description: "place to explore community builders",
-        },
-        {
             name: "trex",
-            url: "https://github.com/ronykax/Trex",
+            url: "https://github.com/ronykax/trex",
             year: "2020",
-            description: "first game i ever made",
+            description: "first game i made",
         },
     ];
 
