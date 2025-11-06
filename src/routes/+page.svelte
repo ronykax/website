@@ -99,7 +99,7 @@
         <br />
         <br />
 
-        <strong>check out some of my projects brlow:</strong>
+        <strong>check out some of my projects below:</strong>
     </p>
 
     <br />
