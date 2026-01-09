@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CoffeeIcon,
   EnvelopeIcon,
   GithubLogoIcon,
   XLogoIcon,
@@ -16,6 +17,7 @@ export function Socials() {
       icon: YoutubeLogoIcon,
     },
     { name: "X", url: "https://x.com/ronykax", icon: XLogoIcon },
+    { name: "Ko-fi", url: "https://ko-fi.com/ronykax", icon: CoffeeIcon },
     { name: "Mail", url: "mailto:contact@ronykax.xyz", icon: EnvelopeIcon },
   ];
 
