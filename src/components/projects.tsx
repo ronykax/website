@@ -39,6 +39,8 @@ export function Projects() {
           <a
             className="flex gap-2 justify-between items-center group"
             href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <div className="flex flex-col">
               <div className="flex gap-2 items-center">
