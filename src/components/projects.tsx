@@ -21,13 +21,13 @@ export function Projects() {
     {
       name: "drawcat.lol",
       description: "A collection of poorly drawn cats",
-      url: "https://messagekit.app",
+      url: "https://drawcat.lol",
       date: "2025",
     },
     {
       name: "Bounce Back",
       description: "Hackathon winning 2D game",
-      url: "https://messagekit.app",
+      url: "https://ronykax.itch.io/bounce-back",
       date: "2024",
     },
   ];

@@ -53,13 +53,16 @@ export async function POST(request: NextRequest) {
       ],
     };
 
-    const discordResponse = await fetch(`${process.env.DISCORD_WEBHOOK_URL}?with_components=1`!, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const discordResponse = await fetch(
+      `${process.env.DISCORD_WEBHOOK_URL}?with_components=1`!,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(discordPayload),
       },
-      body: JSON.stringify(discordPayload),
-    });
+    );
 
     if (!discordResponse.ok) {
       return NextResponse.json(
