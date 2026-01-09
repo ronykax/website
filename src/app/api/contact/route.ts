@@ -39,33 +39,21 @@ export async function POST(request: NextRequest) {
     }
 
     const discordPayload = {
-      embeds: [
+      flags: 32768,
+      components: [
+        { type: 10, content: `## Submission from ${name}` },
         {
-          title: "📬 New Contact Form Submission",
-          color: 0x5865f2,
-          fields: [
-            {
-              name: "👤 Name",
-              value: name,
-              inline: false,
-            },
-            {
-              name: "📋 Subject",
-              value: subject,
-              inline: false,
-            },
-            {
-              name: "💬 Message",
-              value: message,
-              inline: false,
-            },
+          type: 17,
+          components: [
+            { type: 10, content: `**${subject}**` },
+            { type: 14, divider: true, spacing: 1 },
+            { type: 10, content: message },
           ],
-          timestamp: new Date().toISOString(),
         },
       ],
     };
 
-    const discordResponse = await fetch(process.env.DISCORD_WEBHOOK_URL!, {
+    const discordResponse = await fetch(`${process.env.DISCORD_WEBHOOK_URL}?with_components=1`!, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
