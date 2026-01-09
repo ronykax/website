@@ -59,7 +59,6 @@ export function Projects() {
             </span>
           </a>
 
-          {/* <Separator /> */}
           {index !== projects.length - 1 && <Separator />}
         </Fragment>
       ))}
@@ -72,9 +71,15 @@ export function Projects() {
           </span>
         </div>
 
-        <Button variant="link" size="lg">
-          View all projects
-          <ArrowUpRightIcon />
+        <Button variant="link" size="lg" asChild>
+          <a
+            href="https://github.com/ronykax"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View all projects
+            <ArrowUpRightIcon />
+          </a>
         </Button>
       </div>
     </div>

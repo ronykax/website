@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRightIcon, ArrowUpRightIcon, SparkleIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
 import {
@@ -18,25 +18,46 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 
+declare global {
+  interface Window {
+    turnstile?: any;
+  }
+}
+
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [open, setOpen] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
+
+  const turnstileRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<number | null>(null);
+
+  // Render Turnstile when dialog opens
+  useEffect(() => {
+    if (!open) return;
+
+    const render = () => {
+      if (window.turnstile && turnstileRef.current) {
+        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+          theme: "auto",
+          callback: (t: string) => setToken(t),
+        });
+      } else {
+        setTimeout(render, 150);
+      }
+    };
+
+    render();
+
+    return () => {
+      setToken(null);
+    };
+  }, [open]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    const formData = new FormData(e.currentTarget);
-
-    const name = formData.get("name") as string;
-    const subject = formData.get("subject") as string;
-    const message = formData.get("message") as string;
-
-    // Get Turnstile token
-    const turnstileElement = document.querySelector(".cf-turnstile");
-    const token = turnstileElement
-      ?.querySelector("input[name='cf-turnstile-response']")
-      ?.getAttribute("value");
 
     if (!token) {
       toast.error("Please complete the verification");
@@ -44,18 +65,16 @@ export function Contact() {
       return;
     }
 
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          subject,
-          message,
-          token,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, subject, message, token }),
       });
 
       const data = await response.json();
@@ -64,9 +83,13 @@ export function Contact() {
         toast.success("Message sent successfully!");
         setOpen(false);
         e.currentTarget.reset();
-        // Reset Turnstile
+
         if (window.turnstile) {
-          window.turnstile.reset();
+          if (widgetIdRef.current != null) {
+            window.turnstile.reset(widgetIdRef.current);
+          } else {
+            window.turnstile.reset();
+          }
         }
       } else {
         toast.error(data.error || "Failed to send message");
@@ -117,11 +140,7 @@ export function Contact() {
 
                 <div className="flex flex-col gap-2">
                   <Label>Subject</Label>
-                  <Input
-                    placeholder="Project inquiry"
-                    name="subject"
-                    required
-                  />
+                  <Input placeholder="Project inquiry" name="subject" required />
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -136,11 +155,8 @@ export function Contact() {
                   </p>
                 </div>
 
-                <div
-                  className="cf-turnstile"
-                  data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-                  data-theme="auto"
-                />
+                {/* Turnstile mounts here */}
+                <div ref={turnstileRef} />
               </div>
 
               <DialogFooter>

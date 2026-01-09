@@ -27,6 +27,8 @@ export function Socials() {
         <a
           href={item.url}
           key={item.name}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hover:scale-110 duration-100"
         >
           <item.icon className="size-6" />
