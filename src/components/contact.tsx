@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRightIcon, ArrowUpRightIcon, SparkleIcon } from "lucide-react";
+import { ArrowUpRightIcon, CheckIcon, SparkleIcon } from "lucide-react";
 import { useState } from "react";
+import Turnstile from "react-turnstile";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
 import {
@@ -17,7 +18,6 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
-import Turnstile from "react-turnstile";
 
 export function Contact() {
   const [open, setOpen] = useState(false);
@@ -123,15 +123,18 @@ export function Contact() {
                 <Turnstile
                   sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
                   onVerify={setToken}
+                  theme="light"
+                  size="flexible"
+                  className="[&>*:first-child]:h-[65px]"
                 />
-              </div>
 
-              <DialogFooter>
-                <Button size="lg" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Submit"}
-                  <ArrowRightIcon />
-                </Button>
-              </DialogFooter>
+                <DialogFooter>
+                  <Button size="lg" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Submit"}
+                    <CheckIcon />
+                  </Button>
+                </DialogFooter>
+              </div>
             </form>
           </DialogContent>
         </DialogOverlay>
