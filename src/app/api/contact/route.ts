@@ -1,9 +1,10 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { UAParser } from "ua-parser-js";
 
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await req.json();
     const { name, subject, message, token } = body;
 
     // Validate required fields
@@ -15,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify Turnstile token
-    const turnstileResponse = await fetch(
+    const tsResponse = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
         method: "POST",
@@ -29,25 +30,35 @@ export async function POST(request: NextRequest) {
       },
     );
 
-    const turnstileData = await turnstileResponse.json();
+    const tsData = await tsResponse.json();
 
-    if (!turnstileData.success) {
+    if (!tsData.success) {
       return NextResponse.json(
         { error: "Verification failed. Please try again." },
         { status: 400 },
       );
     }
 
-    const discordPayload = {
+    const ua = new UAParser(req.headers.get("user-agent") || "").getResult();
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "Unknown IP";
+
+    const payload = {
       flags: 32768,
+      username: name,
+      avatar_url: `https://api.dicebear.com/9.x/identicon/png?seed=${encodeURIComponent(name)}&backgroundColor=ffffff`,
       components: [
-        { type: 10, content: `## Submission from ${name}` },
         {
           type: 17,
           components: [
-            { type: 10, content: `**${subject}**` },
+            { type: 10, content: `## ${subject}` },
             { type: 14, divider: true, spacing: 1 },
             { type: 10, content: message },
+            { type: 14, divider: true, spacing: 1 },
+            {
+              type: 10,
+              content: `${ua.browser.name || "Unknown browser"}  **·**  ${ua.os.name || "unknown OS"}  →  [\`${ip.length > 15 ? `${ip.slice(0, 15)}...` : ip}\`](https://whatismyipaddress.com/ip/${ip})`,
+            },
           ],
         },
       ],
@@ -61,7 +72,7 @@ export async function POST(request: NextRequest) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(discordPayload),
+      body: JSON.stringify(payload),
     });
 
     if (!discordResponse.ok) {

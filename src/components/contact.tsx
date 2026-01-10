@@ -74,13 +74,13 @@ export function Contact() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button size="lg">
+          <Button size="lg" className="group">
             Get in touch
-            <ArrowUpRightIcon />
+            <ArrowUpRightIcon className="group-hover:rotate-360 duration-500" />
           </Button>
         </DialogTrigger>
 
-        <DialogOverlay className="backdrop-blur-xs bg-black/25">
+        <DialogOverlay className="backdrop-blur-sm bg-black/50">
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Get in touch</DialogTitle>

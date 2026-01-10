@@ -14,19 +14,19 @@ export function Projects() {
   const projects: Project[] = [
     {
       name: "Message Kit",
-      description: "Message builder for Discord",
+      description: "Create, preview, and send rich, interactive Discord messages.",
       url: "https://messagekit.app",
       date: "2025",
     },
     {
       name: "drawcat.lol",
-      description: "A collection of poorly drawn cats",
+      description: "A collection of poorly drawn cats.",
       url: "https://drawcat.lol",
       date: "2025",
     },
     {
       name: "Bounce Back",
-      description: "Hackathon winning 2D game",
+      description: "Hackathon winning 2D game made in 24 hours.",
       url: "https://ronykax.itch.io/bounce-back",
       date: "2024",
     },
@@ -48,7 +48,7 @@ export function Projects() {
                   {project.name}
                 </span>
 
-                <ArrowUpRightIcon className="text-muted-foreground size-4 opacity-0 duration-75 group-hover:opacity-100" />
+                <ArrowUpRightIcon className="text-muted-foreground size-4 scale-0 duration-200 group-hover:scale-[120%]" />
               </div>
 
               <span className="text-sm text-muted-foreground">
@@ -78,9 +78,10 @@ export function Projects() {
             href="https://github.com/ronykax"
             target="_blank"
             rel="noopener noreferrer"
+            className="group"
           >
             View all projects
-            <ArrowUpRightIcon />
+            <ArrowUpRightIcon className="group-hover:rotate-360 duration-500" />
           </a>
         </Button>
       </div>

@@ -2,7 +2,7 @@ import { Socials } from "./socials";
 
 export function Profile() {
   return (
-    <div className="border bg-accent rounded-xl p-8 flex flex-col gap-2 md:w-[60%]">
+    <div className="border bg-accent rounded-xl p-8 flex flex-col gap-4 md:w-[60%]">
       <span className="text-2xl font-semibold tracking-tight">
         Hi, I'm Rony
       </span>

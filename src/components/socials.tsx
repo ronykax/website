@@ -7,6 +7,7 @@ import {
   XLogoIcon,
   YoutubeLogoIcon,
 } from "@phosphor-icons/react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export function Socials() {
   const socials = [
@@ -17,22 +18,27 @@ export function Socials() {
       icon: YoutubeLogoIcon,
     },
     { name: "X", url: "https://x.com/ronykax", icon: XLogoIcon },
-    { name: "Ko-fi", url: "https://ko-fi.com/ronykax", icon: CoffeeIcon },
-    { name: "Mail", url: "mailto:contact@ronykax.xyz", icon: EnvelopeIcon },
+    { name: "Tip", url: "https://ko-fi.com/ronykax", icon: CoffeeIcon },
+    { name: "Email", url: "mailto:contact@ronykax.xyz", icon: EnvelopeIcon },
   ];
 
   return (
     <div className="flex gap-4">
       {socials.map((item) => (
-        <a
-          href={item.url}
-          key={item.name}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:scale-110 duration-100"
-        >
-          <item.icon className="size-6" />
-        </a>
+        <Tooltip key={item.name}>
+          <TooltipTrigger asChild>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <item.icon className="size-6" />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent>
+            {item.name}
+          </TooltipContent>
+        </Tooltip>
       ))}
     </div>
   );
