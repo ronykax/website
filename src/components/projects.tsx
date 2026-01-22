@@ -15,7 +15,7 @@ export function Projects() {
       name: "Openbin",
       description: "Open source Pastebin with an API, CLI, and web interface.",
       url: "https://github.com/opnbin",
-      date: "2025",
+      date: "2026",
     },
     {
       name: "Message Kit",
