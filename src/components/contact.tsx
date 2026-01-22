@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRightIcon, CheckIcon, SparkleIcon } from "lucide-react";
+import { CheckIcon, SendIcon, SparkleIcon } from "lucide-react";
 import { useState } from "react";
 import Turnstile from "react-turnstile";
 import { toast } from "sonner";
@@ -75,8 +75,8 @@ export function Contact() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button size="lg" className="group">
-            Get in touch
-            <ArrowUpRightIcon className="group-hover:rotate-360 duration-500" />
+            Send a message
+            <SendIcon />
           </Button>
         </DialogTrigger>
 

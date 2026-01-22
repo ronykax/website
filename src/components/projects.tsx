@@ -1,6 +1,5 @@
-import { ArrowUpRightIcon, MailIcon } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
-import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 export function Projects() {
@@ -13,15 +12,16 @@ export function Projects() {
 
   const projects: Project[] = [
     {
-      name: "Message Kit",
-      description: "Create, preview, and send rich, interactive Discord messages.",
-      url: "https://messagekit.app",
+      name: "Openbin",
+      description: "Open source Pastebin with an API, CLI, and web interface.",
+      url: "https://github.com/opnbin",
       date: "2025",
     },
     {
-      name: "drawcat.lol",
-      description: "A collection of poorly drawn cats.",
-      url: "https://drawcat.lol",
+      name: "Message Kit",
+      description:
+        "Create, preview, and send rich, interactive Discord messages.",
+      url: "https://messagekit.app",
       date: "2025",
     },
     {
@@ -64,27 +64,6 @@ export function Projects() {
           {index !== projects.length - 1 && <Separator />}
         </Fragment>
       ))}
-
-      <div className="flex items-center justify-between gap-2 mt-4">
-        <div className="flex gap-2 items-center">
-          <MailIcon className="text-muted-foreground size-4" />
-          <span className="hidden md:block text-muted-foreground text-sm">
-            contact@ronykax.xyz
-          </span>
-        </div>
-
-        <Button variant="link" size="lg" asChild>
-          <a
-            href="https://github.com/ronykax"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group"
-          >
-            View all projects
-            <ArrowUpRightIcon className="group-hover:rotate-360 duration-500" />
-          </a>
-        </Button>
-      </div>
     </div>
   );
 }
