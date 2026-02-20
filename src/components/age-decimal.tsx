@@ -1,22 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getAgeDecimal } from "@/lib/utils";
 
-const DOB = new Date("2008-02-20");
+const DOB = new Date("2008-02-20T00:00:00");
+
+function getAgeDecimal(dob: Date) {
+  const now = Date.now();
+  const birth = dob.getTime();
+
+  const years = (now - birth) / (1000 * 60 * 60 * 24 * 365.2422);
+  return years.toFixed(10);
+}
 
 export function AgeDecimal() {
-  const [decimal, setDecimal] = useState("");
+  const [age, setAge] = useState("");
 
   useEffect(() => {
-    setDecimal(getAgeDecimal(DOB));
+    const update = () => setAge(getAgeDecimal(DOB));
+    update();
 
-    const interval = setInterval(() => {
-      setDecimal(getAgeDecimal(DOB));
-    }, 50);
-
+    const interval = setInterval(update, 50);
     return () => clearInterval(interval);
   }, []);
 
-  return <>{decimal}</>;
+  return (
+    <span className="font-mono font-semibold tracking-tight px-0.5">
+      {age}
+    </span>
+  )
 }

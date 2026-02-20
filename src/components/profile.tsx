@@ -10,10 +10,7 @@ export function Profile() {
 
       <span className="text-muted-foreground">
         I'm{" "}
-        <span className="font-mono font-semibold tracking-tight px-0.5">
-          17
-          <AgeDecimal />
-        </span>{" "}
+        <AgeDecimal />{" "}
         years old, with a passion for building SaaS products and game
         development. I also enjoy automation and homelabbing.
       </span>
