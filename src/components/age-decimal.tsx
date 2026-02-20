@@ -24,8 +24,6 @@ export function AgeDecimal() {
   }, []);
 
   return (
-    <span className="font-mono font-semibold tracking-tight px-0.5">
-      {age}
-    </span>
-  )
+    <span className="font-mono font-semibold tracking-tight px-0.5">{age}</span>
+  );
 }

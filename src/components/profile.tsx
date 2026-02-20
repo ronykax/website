@@ -9,10 +9,8 @@ export function Profile() {
       </span>
 
       <span className="text-muted-foreground">
-        I'm{" "}
-        <AgeDecimal />{" "}
-        years old, with a passion for building SaaS products and game
-        development. I also enjoy automation and homelabbing.
+        I'm <AgeDecimal /> years old, with a passion for building SaaS products
+        and game development. I also enjoy automation and homelabbing.
       </span>
 
       <div className="my-auto" />
