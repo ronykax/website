@@ -2,28 +2,20 @@
 
 import { useEffect, useState } from "react";
 
-const DOB = new Date("2008-02-20T00:00:00");
+const getDecimal = () => {
+  const birthday = new Date("2008-02-20");
+  const ageMs = Date.now() - birthday.getTime();
+  const ageYears = ageMs / (365.25 * 24 * 60 * 60 * 1000);
+  return (ageYears % 1).toFixed(10).slice(1);
+};
 
-function getAgeDecimal(dob: Date) {
-  const now = Date.now();
-  const birth = dob.getTime();
-
-  const years = (now - birth) / (1000 * 60 * 60 * 24 * 365.2422);
-  return years.toFixed(10);
-}
-
-export function AgeDecimal() {
-  const [age, setAge] = useState("");
+export default function AgeDecimal() {
+  const [decimal, setDecimal] = useState(getDecimal);
 
   useEffect(() => {
-    const update = () => setAge(getAgeDecimal(DOB));
-    update();
-
-    const interval = setInterval(update, 50);
+    const interval = setInterval(() => setDecimal(getDecimal()), 50);
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <span className="font-mono font-semibold tracking-tight px-0.5">{age}</span>
-  );
+  return decimal;
 }

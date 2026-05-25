@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 
-const font = Geist();
+const inter = Inter();
 
 export const metadata: Metadata = {
   title: "Rony Kati",
-  description: "Rony's corner of the world wide web.'",
+  description: "Rony's corner of the world wide web.",
 };
 
 export default function RootLayout({
@@ -16,19 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${font.className} antialiased`}>
-        <main>
-          <div className="absolute top-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(226,227,230,1)_100%)]" />
+    <html
+      className={cn("h-full antialiased", inter.className)}
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
           {children}
-          <Toaster />
-        </main>
-
-        <script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          async
-          defer
-        />
+        </ThemeProvider>
       </body>
     </html>
   );

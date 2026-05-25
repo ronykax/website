@@ -1,20 +1,15 @@
-import { Contact } from "@/components/contact";
-import { Profile } from "@/components/profile";
+import { About } from "@/components/about";
+import { Github } from "@/components/github";
+import { Header } from "@/components/header";
 import { Projects } from "@/components/projects";
-import { Thing } from "@/components/thing";
 
-export default function Page() {
+export default async function Page() {
   return (
-    <div className="max-w-4xl mx-auto p-8 flex flex-col gap-8 md:h-screen justify-center">
-      <div className="flex md:flex-row flex-col gap-8">
-        <Profile />
-        <Contact />
-      </div>
-
-      <div className="flex md:flex-row flex-col gap-8">
-        <Thing />
-        <Projects />
-      </div>
+    <div className="mx-auto flex max-w-2xl flex-col gap-0 py-12">
+      <Header />
+      <About />
+      <Projects />
+      <Github />
     </div>
   );
 }

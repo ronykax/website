@@ -1,69 +1,90 @@
 import { ArrowUpRightIcon } from "lucide-react";
-import { Fragment } from "react/jsx-runtime";
-import { Separator } from "./ui/separator";
+import Image from "next/image";
+import { Anchor } from "./anchor";
+import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
+
+interface Project {
+  description: string;
+  image: string;
+  name: string;
+  url: string;
+}
+
+const projects: Project[] = [
+  {
+    description: "A macOS app that lets you bind global hotkeys to actions.",
+    image: "/keybored.png",
+    name: "Keybored",
+    url: "https://ronykax.github.io/keybored",
+  },
+  {
+    description: "Create, preview, and send rich, interactive messages.",
+    image: "/msgkit.png",
+    name: "Message Kit",
+    url: "https://messagekit.app",
+  },
+  {
+    description: "Created a winning 2D game during a 24-hour game jam.",
+    image: "/bounceback.png",
+    name: "Bounce Back",
+    url: "https://ronykax.itch.io/bounce-back",
+  },
+  {
+    description: "A super simple 🗑️ pastebin API (self-hosted).",
+    image: "/openbin.png",
+    name: "Openbin",
+    url: "https://github.com/ronykax/openbin",
+  },
+];
 
 export function Projects() {
-  type Project = {
-    name: string;
-    description: string;
-    url: string;
-    date: string;
-  };
-
-  const projects: Project[] = [
-    {
-      name: "Openbin",
-      description: "Open source Pastebin with an API, CLI, and web interface.",
-      url: "https://github.com/opnbin",
-      date: "2026",
-    },
-    {
-      name: "Message Kit",
-      description:
-        "Create, preview, and send rich, interactive Discord messages.",
-      url: "https://messagekit.app",
-      date: "2025",
-    },
-    {
-      name: "Bounce Back",
-      description: "Hackathon winning 2D game made in 24 hours.",
-      url: "https://ronykax.itch.io/bounce-back",
-      date: "2024",
-    },
-  ];
-
   return (
-    <div className="flex flex-col gap-4 border bg-accent rounded-xl p-8 md:w-[65%] h-fit">
-      {projects.map((project, index) => (
-        <Fragment key={project.name}>
-          <a
-            className="flex gap-2 justify-between items-center group"
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="flex flex-col">
-              <div className="flex gap-2 items-center">
-                <span className="font-semibold tracking-tight">
-                  {project.name}
-                </span>
-
-                <ArrowUpRightIcon className="text-muted-foreground size-4 scale-0 duration-200 group-hover:scale-[120%]" />
+    <div className="p-8">
+      <Carousel
+        className="w-full"
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+      >
+        <CarouselContent>
+          {projects.map((project) => (
+            <CarouselItem className="basis-1/1 md:basis-1/2" key={project.name}>
+              <div className="h-full p-1">
+                <Card className="relative mx-auto size-full max-w-sm pt-0">
+                  <div className="aspect-video w-full overflow-hidden">
+                    <Image
+                      alt={project.name}
+                      className="size-full object-cover"
+                      height={1080}
+                      src={project.image}
+                      width={1920}
+                    />
+                  </div>
+                  <CardHeader>
+                    <Anchor className="w-fit" href={project.url}>
+                      <CardTitle className="flex items-center gap-1 font-semibold decoration-dotted underline-offset-[3px] hover:underline">
+                        {project.name}
+                        <ArrowUpRightIcon className="size-4 text-muted-foreground" />
+                      </CardTitle>
+                    </Anchor>
+                    <CardDescription>{project.description}</CardDescription>
+                  </CardHeader>
+                </Card>
               </div>
-
-              <span className="text-sm text-muted-foreground">
-                {project.description}
-              </span>
-            </div>
-
-            <span className="text-sm text-muted-foreground">
-              {project.date}
-            </span>
-          </a>
-
-          {index !== projects.length - 1 && <Separator />}
-        </Fragment>
-      ))}
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 }
