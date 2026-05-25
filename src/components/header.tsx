@@ -40,7 +40,7 @@ export function Header() {
               size: "icon-lg",
               variant: "ghost",
             })}
-            href="https://discord.gg"
+            href="https://discord.gg/X7ntJFDzz7"
             title="Discord"
           >
             <SiDiscord className="size-5" />
