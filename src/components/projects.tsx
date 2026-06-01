@@ -46,7 +46,7 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <div className="p-8">
+    <div className="p-7">
       <Carousel
         className="w-full"
         opts={{
