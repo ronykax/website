@@ -1,4 +1,4 @@
-import { SiDiscord, SiX } from "@icons-pack/react-simple-icons";
+import { SiDiscord, SiSubstack, SiX } from "@icons-pack/react-simple-icons";
 import { PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import { Anchor } from "./anchor";
@@ -44,6 +44,16 @@ export function Header() {
             title="Discord"
           >
             <SiDiscord className="size-5" />
+          </Anchor>
+          <Anchor
+            className={buttonVariants({
+              size: "icon-lg",
+              variant: "ghost",
+            })}
+            href="https://ronykati.substack.com"
+            title="Substack"
+          >
+            <SiSubstack className="size-4" />
           </Anchor>
         </div>
       </div>
