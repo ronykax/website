@@ -19,6 +19,13 @@ interface Project {
 
 const projects: Project[] = [
   {
+    description:
+      "Multi-purpose agent with a simple, lightweight memory system.",
+    image: "/lucia.png",
+    name: "Lucia",
+    url: "https://ronykati.substack.com/p/memory-for-agents-is-simple",
+  },
+  {
     description: "A macOS app that lets you bind global hotkeys to actions.",
     image: "/keybored.png",
     name: "Keybored",
