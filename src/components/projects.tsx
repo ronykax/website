@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "lucide-react";
+import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 import { Anchor } from "./anchor";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -53,7 +53,7 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <div className="p-7">
+    <div className="flex flex-col items-center gap-4 p-7">
       <Carousel
         className="w-full"
         opts={{
@@ -89,9 +89,14 @@ export function Projects() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="hidden md:flex" />
+        <CarouselNext className="hidden md:flex" />
       </Carousel>
+
+      <div className="flex items-center gap-2.5 text-muted-foreground">
+        <span>drag to explore</span>
+        <ArrowRightIcon className="size-4" />
+      </div>
     </div>
   );
 }
