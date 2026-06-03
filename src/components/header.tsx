@@ -1,4 +1,11 @@
-import { SiDiscord, SiSubstack, SiX } from "@icons-pack/react-simple-icons";
+import {
+  SiDiscord,
+  SiInstagram,
+  SiInstagramHex,
+  SiSubstack,
+  SiSubstackHex,
+  SiX,
+} from "@icons-pack/react-simple-icons";
 import { PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import { Anchor } from "./anchor";
@@ -33,7 +40,7 @@ export function Header() {
             href="https://x.com/ronykax"
             title="X"
           >
-            <SiX />
+            <SiX className="size-5" />
           </Anchor>
           <Anchor
             className={buttonVariants({
@@ -43,7 +50,7 @@ export function Header() {
             href="https://discord.gg/X7ntJFDzz7"
             title="Discord"
           >
-            <SiDiscord className="size-5" />
+            <SiDiscord className="size-6" color="#616eff" />
           </Anchor>
           <Anchor
             className={buttonVariants({
@@ -53,7 +60,17 @@ export function Header() {
             href="https://ronykati.substack.com"
             title="Substack"
           >
-            <SiSubstack className="size-4" />
+            <SiSubstack className="size-5" color={SiSubstackHex} />
+          </Anchor>
+          <Anchor
+            className={buttonVariants({
+              size: "icon-lg",
+              variant: "ghost",
+            })}
+            href="https://instagram.com/rony.json"
+            title="Instagram"
+          >
+            <SiInstagram className="size-5" color={SiInstagramHex} />
           </Anchor>
         </div>
       </div>

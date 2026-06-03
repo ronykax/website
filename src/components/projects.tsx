@@ -93,7 +93,7 @@ export function Projects() {
         <CarouselNext className="hidden md:flex" />
       </Carousel>
 
-      <div className="flex items-center gap-2.5 text-muted-foreground">
+      <div className="flex items-center gap-2.5 text-muted-foreground md:hidden">
         <span>drag to explore</span>
         <ArrowRightIcon className="size-4" />
       </div>
