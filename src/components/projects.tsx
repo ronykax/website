@@ -70,9 +70,9 @@ export function Projects() {
                     <Image
                       alt={project.name}
                       className="size-full object-cover"
-                      height={1080}
+                      height={312}
                       src={project.image}
-                      width={1920}
+                      width={554}
                     />
                   </div>
                   <CardHeader>
