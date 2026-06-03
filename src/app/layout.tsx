@@ -21,7 +21,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
     >
-      <body>
+      <body className="relative min-h-screen bg-[radial-gradient(125%_125%_at_50%_10%,transparent_40%,rgb(125_17_240/0.5)_100%)] bg-background bg-fixed">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
