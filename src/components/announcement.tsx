@@ -15,7 +15,10 @@ function BannerContent() {
       <BellIcon className="size-5 origin-[top_center] animate-ring fill-current" />
       <span>I've started posting on Instagram!</span>
       <Anchor
-        className={buttonVariants({ size: "sm" })}
+        className={buttonVariants({
+          size: "sm",
+          className: "dark bg-white",
+        })}
         href="https://instagram.com/rony.json"
         title="Instagram"
       >
