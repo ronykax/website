@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import { Announcement } from "@/components/announcement";
 
 const inter = Inter();
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           disableTransitionOnChange
           enableSystem
         >
+          <Announcement />
           {children}
         </ThemeProvider>
       </body>

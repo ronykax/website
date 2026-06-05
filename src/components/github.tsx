@@ -5,7 +5,7 @@ export function Github() {
   return (
     <div className="p-8">
       <Anchor
-        className="flex w-full justify-center rounded-4xl border bg-card/50 p-4"
+        className="flex w-full justify-center rounded-4xl border bg-card/50 p-4 shadow-md"
         href="https://github.com/ronykax"
         title="Github"
       >
