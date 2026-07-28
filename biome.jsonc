@@ -6,6 +6,6 @@
     "ultracite/biome/next"
   ],
   "files": {
-    "includes": ["!src/components/ui"]
+    "includes": ["!src/components/react-bits"]
   }
 }

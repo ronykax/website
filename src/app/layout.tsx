@@ -1,38 +1,33 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import "./globals.css";
-import { Announcement } from "@/components/announcement";
+import { Figtree, Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const inter = Inter();
+const figtreeHeading = Figtree({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
+  description: "Rony's corner of the world wide web.",
   title: "Rony Kati",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function ({ children }: { children: React.ReactNode }) {
   return (
     <html
-      className={cn("h-full antialiased", inter.className)}
+      className={cn(
+        "antialiased",
+        "font-sans",
+        geist.variable,
+        figtreeHeading.variable
+      )}
       lang="en"
       suppressHydrationWarning
     >
-      <body className="relative min-h-screen bg-[radial-gradient(125%_125%_at_50%_10%,transparent_40%,rgb(125_17_240/0.5)_100%)] bg-background bg-fixed">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-          enableSystem
-        >
-          <Announcement />
-          {children}
-        </ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
