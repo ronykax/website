@@ -12,12 +12,12 @@ export const BUBBLE_HOLD = 1;
 export const REVEAL_DURATION = PULSE_PERIOD * 0.75;
 export const REVEAL_EASE = [0.65, 0, 0.35, 1] as const;
 /**
- * Feathered hole grows from the centre. The soft edge trails the radius so the
- * mask is fully opaque at 0%, and REVEAL_END overshoots 100% (the distance to
- * the viewport corner) so the edge itself clears the corners.
+ * Feathered hole grows from the centre. Soft edge leads the radius with a
+ * positive calc only — Safari drops the whole mask if a stop goes negative
+ * (e.g. calc(0% - 1.5%)). REVEAL_END overshoots 100% so the edge clears corners.
  */
 export const REVEAL_MASK =
-  "radial-gradient(circle at 50% 50%, transparent calc(var(--reveal) - 1.5%), #000 var(--reveal))";
+  "radial-gradient(circle at 50% 50%, transparent var(--reveal), #000 calc(var(--reveal) + 1.5%))";
 export const REVEAL_END = "104%";
 
 export const MESSAGES = [

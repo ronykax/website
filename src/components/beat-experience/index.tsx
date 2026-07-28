@@ -243,7 +243,20 @@ export function BeatExperience() {
           className="fixed inset-0 z-30 overflow-hidden bg-black text-neutral-100"
           initial={{ "--reveal": "0%" }}
           onAnimationComplete={onRevealComplete}
-          style={{ maskImage: REVEAL_MASK, WebkitMaskImage: REVEAL_MASK }}
+          style={
+            // Mask only during the wipe — at --reveal:0% Safari treats the
+            // gradient as fully transparent and blanks the whole pre layer.
+            phase === "post"
+              ? {
+                  maskImage: REVEAL_MASK,
+                  maskRepeat: "no-repeat",
+                  maskSize: "100% 100%",
+                  WebkitMaskImage: REVEAL_MASK,
+                  WebkitMaskRepeat: "no-repeat",
+                  WebkitMaskSize: "100% 100%",
+                }
+              : undefined
+          }
           transition={{
             duration: reduceMotion ? 0 : REVEAL_DURATION,
             ease: REVEAL_EASE,
