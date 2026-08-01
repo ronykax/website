@@ -1,6 +1,7 @@
 "use client";
 
 import gsap from "gsap";
+import { SparkleIcon } from "lucide-react";
 import {
   type KeyboardEvent,
   type RefObject,
@@ -25,7 +26,7 @@ function bubbleClass(side: Side) {
   return cn(
     "w-fit max-w-full whitespace-nowrap rounded-full px-6 py-4 text-2xl text-white leading-snug sm:px-8 sm:py-5 sm:text-3xl",
     side === "incoming"
-      ? "self-start bg-linear-0 from-neutral-800/75 to-neutral-700/75 shadow-md"
+      ? "self-start bg-linear-0 from-neutral-800/65 to-neutral-700/65 shadow-md"
       : "self-end bg-[#0b84ff] bg-linear-0 from-blue-500/75 to-blue-400/75 shadow-md"
   );
 }
@@ -180,11 +181,15 @@ export function PreDropStage({
             (!fadedIn || playing) && "opacity-0"
           )}
         >
-          <span className="font-bold font-heading text-5xl tracking-tight">
-            hello 👋
-          </span>
+          <div className="flex items-center gap-5">
+            <span className="font-bold font-heading text-5xl tracking-tight">
+              hello world
+            </span>
+            <SparkleIcon className="size-8 fill-white" />
+          </div>
+
           <p className="font-heading text-2xl text-neutral-300 leading-relaxed tracking-wide">
-            click anywhere to continue.
+            click or tap anywhere to continue.
             <br />
             headphones are recommended.
           </p>

@@ -1,7 +1,6 @@
 import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 import CircularText from "../react-bits/circular-text";
-import { Highlighter } from "../react-bits/text-highlighter";
 import { SOCIALS } from "./constants";
 
 export function PostDropContent() {
@@ -49,54 +48,29 @@ export function PostDropContent() {
           doing it seriously since 2022.
         </p>
         <p>
-          Most of my time goes into building{" "}
-          <Highlighter
-            animationDuration={1000}
-            color="rgba(255, 156, 156, 0.2)"
-            iterations={4}
-          >
-            SaaS products
-          </Highlighter>
-          ,{" "}
-          <Highlighter
-            action="underline"
-            animationDuration={1000}
-            color="#000"
-            iterations={4}
-          >
-            AI agents
-          </Highlighter>
-          , and{" "}
-          <Highlighter
-            animationDuration={1000}
-            color="rgba(156, 211, 255, 0.2)"
-            iterations={4}
-          >
-            macOS apps
-          </Highlighter>
-          . Outside of that, I enjoy homelabbing a lot.
+          Most of my time goes into building <strong>SaaS products</strong>,{" "}
+          <strong>AI agents</strong>, and <strong>macOS apps</strong>. Outside
+          of that, I enjoy <strong>homelabbing</strong> a lot.
         </p>
       </div>
+
       <nav
         aria-label="Social"
-        className="flex animate-land-in flex-wrap items-center gap-x-4 gap-y-3"
+        className="-ml-4 flex animate-land-in flex-wrap items-center gap-y-3"
         style={{ animationDelay: "360ms" }}
       >
-        {SOCIALS.map((social, index) => (
-          <span className="contents" key={social.label}>
-            {index > 0 ? (
-              <span aria-hidden className="text-neutral-300">
-                ·
-              </span>
-            ) : null}
-            <a
-              className="inline-flex items-center gap-2 font-medium text-base text-black transition-colors hover:text-neutral-500 lg:text-xl"
-              href={social.href}
-            >
-              {social.label}
-              <ArrowUpRightIcon aria-hidden className="size-6" />
-            </a>
-          </span>
+        {SOCIALS.map((social) => (
+          <a
+            className="group inline-flex items-center gap-2 rounded-2xl bg-white/0 px-4 py-2 font-medium text-base text-black duration-300 hover:bg-white/25 lg:text-xl"
+            href={social.href}
+            key={social.label}
+          >
+            {social.label}
+            <ArrowUpRightIcon
+              aria-hidden
+              className="size-6 duration-300 group-hover:rotate-360"
+            />
+          </a>
         ))}
       </nav>
     </main>

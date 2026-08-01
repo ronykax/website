@@ -10,9 +10,9 @@ export function PreBackdrop({ progress }: { progress: number }) {
       className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden"
     >
       <Aurora
-        amplitude={0.5 + progress * 0.2}
+        amplitude={0.35 + progress * 0.075}
         blend={1}
-        colorStops={["#A855F7", "#B497CF", "#5227FF"]}
+        colorStops={["#7cff67", "#B497CF", "#5227FF"]}
         speed={0.75 + progress * 3}
       />
     </div>
@@ -32,9 +32,9 @@ export function PostBackdrop({ beatPulse }: { beatPulse: number }) {
           centerX={0}
           centerY={0}
           className="opacity-75"
-          color1="#bc95ff"
-          color2="#ffffff"
-          color3="#b68bff"
+          color1="#fcc0fb"
+          color2="#7d5dfc"
+          color3="#d5bbed"
           colorBalance={0}
           contrast={1}
           gamma={1}
