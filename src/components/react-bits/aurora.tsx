@@ -1,5 +1,5 @@
-import { Color, Mesh, Program, Renderer, Triangle } from "ogl";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
+import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -108,19 +108,15 @@ void main() {
 `;
 
 interface AuroraProps {
+  colorStops?: string[];
   amplitude?: number;
   blend?: number;
-  colorStops?: string[];
-  speed?: number;
   time?: number;
+  speed?: number;
 }
 
 export default function Aurora(props: AuroraProps) {
-  const {
-    colorStops = ["#5227FF", "#7cff67", "#5227FF"],
-    amplitude = 1.0,
-    blend = 0.5,
-  } = props;
+  const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
   const propsRef = useRef<AuroraProps>(props);
   propsRef.current = props;
 
@@ -128,27 +124,23 @@ export default function Aurora(props: AuroraProps) {
 
   useEffect(() => {
     const ctn = ctnDom.current;
-    if (!ctn) {
-      return;
-    }
+    if (!ctn) return;
 
     const renderer = new Renderer({
       alpha: true,
-      antialias: true,
       premultipliedAlpha: true,
+      antialias: true
     });
-    const { gl } = renderer;
+    const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.canvas.style.backgroundColor = "transparent";
+    gl.canvas.style.backgroundColor = 'transparent';
 
     let program: Program | undefined;
 
     function resize() {
-      if (!ctn) {
-        return;
-      }
+      if (!ctn) return;
       const width = ctn.offsetWidth;
       const height = ctn.offsetHeight;
       renderer.setSize(width, height);
@@ -156,28 +148,28 @@ export default function Aurora(props: AuroraProps) {
         program.uniforms.uResolution.value = [width, height];
       }
     }
-    window.addEventListener("resize", resize);
+    window.addEventListener('resize', resize);
 
     const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
       delete geometry.attributes.uv;
     }
 
-    const colorStopsArray = colorStops.map((hex) => {
+    const colorStopsArray = colorStops.map(hex => {
       const c = new Color(hex);
       return [c.r, c.g, c.b];
     });
 
     program = new Program(gl, {
+      vertex: VERT,
       fragment: FRAG,
       uniforms: {
+        uTime: { value: 0 },
         uAmplitude: { value: amplitude },
-        uBlend: { value: blend },
         uColorStops: { value: colorStopsArray },
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
-        uTime: { value: 0 },
-      },
-      vertex: VERT,
+        uBlend: { value: blend }
+      }
     });
 
     const mesh = new Mesh(gl, { geometry, program });
@@ -205,13 +197,13 @@ export default function Aurora(props: AuroraProps) {
 
     return () => {
       cancelAnimationFrame(animateId);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener('resize', resize);
       if (ctn && gl.canvas.parentNode === ctn) {
         ctn.removeChild(gl.canvas);
       }
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, []);
+  }, [amplitude]);
 
-  return <div className="h-full w-full" ref={ctnDom} />;
+  return <div ref={ctnDom} className="w-full h-full" />;
 }
