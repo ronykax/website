@@ -1,33 +1,32 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Figtree, Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { Shell } from "./shell";
 
-const figtreeHeading = Figtree({
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-geist-sans",
 });
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+});
 
 export const metadata: Metadata = {
-  description: "Rony's corner of the world wide web.",
-  title: "Rony Kati",
+  description: "an indie builder.",
+  title: "rony kati",
 };
 
-export default function ({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      className={cn(
-        "antialiased",
-        "font-sans",
-        geist.variable,
-        figtreeHeading.variable
-      )}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       lang="en"
-      suppressHydrationWarning
     >
-      <body>{children}</body>
+      <body>
+        <Shell>{children}</Shell>
+      </body>
     </html>
   );
 }

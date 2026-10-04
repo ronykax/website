@@ -1,5 +1,5 @@
-import { BeatExperience } from "@/components/beat-experience";
+import { redirect } from "next/navigation";
 
-export default function () {
-  return <BeatExperience />;
+export default function Page() {
+  redirect("/blog");
 }
