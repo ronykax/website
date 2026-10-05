@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { tabDirection } from "./tab-transition";
 
 const tabs = ["blog", "watch", "goals"] as const;
 
@@ -34,6 +35,7 @@ export function Tabs() {
           key={tabItem}
           scroll={false}
           style={{ gridColumnStart: itemIndex + 1 }}
+          transitionTypes={tabDirection(index, itemIndex)}
         >
           {tabItem}
         </Link>

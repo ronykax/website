@@ -31,3 +31,40 @@ body {
     cursor: pointer;
   }
 }
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.tab-left),
+::view-transition-group(.tab-right) {
+  animation: none;
+}
+
+::view-transition-old(.tab-right) {
+  --tab-x: -2rem;
+  animation: 250ms ease-in-out both tab-move reverse;
+}
+
+::view-transition-new(.tab-right) {
+  --tab-x: 2rem;
+  animation: 250ms ease-in-out both tab-move;
+}
+
+::view-transition-old(.tab-left) {
+  --tab-x: 2rem;
+  animation: 250ms ease-in-out both tab-move reverse;
+}
+
+::view-transition-new(.tab-left) {
+  --tab-x: -2rem;
+  animation: 250ms ease-in-out both tab-move;
+}
+
+@keyframes tab-move {
+  from {
+    filter: blur(12px);
+    opacity: 0;
+    translate: var(--tab-x);
+  }
+}
